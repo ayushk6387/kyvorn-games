@@ -80,6 +80,7 @@ nav a:hover {
     box-shadow: 0 5px 20px #9b63ed70;
 }
 
+
 /* HERO SECTION */
 
 .hero {
@@ -94,10 +95,11 @@ nav a:hover {
             #080b14dd 45%,
             #080b1470 100%
         ),
-        url("https://images.unsplash.com/photo-1518709268805-4e9042af9f23");
+        url("https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=65");
     background-size: cover;
     background-position: center;
 }
+
 
 .hero-content {
     max-width: 650px;
