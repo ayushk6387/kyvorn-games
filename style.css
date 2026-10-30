@@ -65,8 +65,8 @@ nav a:hover {
 
 .explore-btn {
     display: inline-block;
-    background: #9b63ed;
-    color: white;
+    background: #6f35c5;
+    color: #ffffff;
     padding: 13px 22px;
     border-radius: 5px;
     font-weight: bold;
@@ -75,11 +75,10 @@ nav a:hover {
 }
 
 .explore-btn:hover {
-    background: #8144d7;
+    background: #54259c;
     transform: translateY(-3px);
     box-shadow: 0 5px 20px #9b63ed70;
 }
-
 
 /* HERO SECTION */
 
@@ -99,7 +98,6 @@ nav a:hover {
     background-size: cover;
     background-position: center;
 }
-
 
 .hero-content {
     max-width: 650px;
@@ -134,8 +132,8 @@ nav a:hover {
 
 .play-btn {
     display: inline-block;
-    background: #a16af2;
-    color: white;
+    background: #6f35c5;
+    color: #ffffff;
     padding: 16px 28px;
     text-decoration: none;
     font-weight: bold;
@@ -144,7 +142,7 @@ nav a:hover {
 }
 
 .play-btn:hover {
-    background: #8144d7;
+    background: #54259c;
     transform: translateY(-4px);
     box-shadow: 0 8px 25px #9b63ed70;
 }
@@ -191,12 +189,12 @@ nav a:hover {
 .feature-item h3 {
     font-size: 14px;
     letter-spacing: 1px;
-    color: #c49aff;
+    color: #d0b0ff;
     margin-bottom: 8px;
 }
 
 .feature-item p {
-    color: #9da4b5;
+    color: #c0c6d4;
     font-size: 13px;
 }
 
@@ -228,7 +226,7 @@ nav a:hover {
 }
 
 .section-heading p {
-    color: #9da4b5;
+    color: #c0c6d4;
     line-height: 1.7;
 }
 
@@ -299,8 +297,8 @@ nav a:hover {
 
 .game-info a {
     display: inline-block;
-    background: #9b63ed;
-    color: white;
+    background: #6f35c5;
+    color: #ffffff;
     padding: 12px 20px;
     border-radius: 4px;
     text-decoration: none;
@@ -309,7 +307,7 @@ nav a:hover {
 }
 
 .game-info a:hover {
-    background: #8144d7;
+    background: #54259c;
 }
 
 /* COMING SOON CARD */
@@ -363,7 +361,7 @@ nav a:hover {
 footer {
     text-align: center;
     padding: 30px 20px;
-    color: #858da0;
+    color: #b0b8c9;
     border-top: 1px solid #242b3d;
     background: #0d1220;
 }
@@ -478,7 +476,7 @@ footer {
 }
 
 .game-details span {
-    color: #b5bac8;
+    color: #c5cad6;
     font-size: 12px;
     background: #202a40;
     padding: 8px 10px;
