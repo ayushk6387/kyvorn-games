@@ -226,7 +226,9 @@
             maxlength="30"
             required
         >
-
+        <select id="reviewGame" required>
+            <option value="jungle-quest">Jungle Quest</option>
+        </select>
         <select id="gameRating" required>
             <option value="">Select your rating</option>
             <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
@@ -310,10 +312,13 @@ async function loadReviews() {
 
     reviewsList.textContent = "Loading player reviews...";
 
-    const { data, error } = await window.supabaseClient
-        .from("game_reviews")
-        .select("player_name, rating, review, created_at")
-        .order("created_at", { ascending: false });
+    const selectedGame = document.getElementById("reviewGame").value;
+
+const { data, error } = await window.supabaseClient
+    .from("game_reviews")
+    .select("player_name, rating, review, created_at")
+    .eq("game_slug", selectedGame)
+    .order("created_at", { ascending: false });
 
     if (error) {
         reviewsList.textContent = "Unable to load reviews. Please try again later.";
@@ -384,6 +389,7 @@ feedbackForm.addEventListener("submit", async function(event) {
     const playerName = document.getElementById("playerName").value.trim();
     const rating = Number(document.getElementById("gameRating").value);
     const review = document.getElementById("playerReview").value.trim();
+    const gameSlug = document.getElementById("reviewGame").value;
 
     if (playerName.length < 1 || playerName.length > 30 || review.length < 5) {
         feedbackMessage.textContent = "Please enter a nickname (max 30 characters) and a review of at least 5 characters.";
@@ -395,10 +401,11 @@ feedbackForm.addEventListener("submit", async function(event) {
     const { error } = await window.supabaseClient
         .from("game_reviews")
         .insert([{
-            player_name: playerName,
-            rating: rating,
-            review: review
-        }]);
+    player_name: playerName,
+    rating: rating,
+    review: review,
+    game_slug: gameSlug
+}]);
 
     if (error) {
         feedbackMessage.textContent = "Submission failed. Please try again.";
@@ -408,6 +415,7 @@ feedbackForm.addEventListener("submit", async function(event) {
 
     feedbackMessage.textContent = "Thank you! Your feedback was submitted successfully.";
     feedbackForm.reset();
+    loadReviews();
 });
 };
 document.head.appendChild(supabaseScript);
