@@ -258,7 +258,11 @@
         <h2>PLAYER REVIEWS</h2>
         <p>See what our players think about KYVORN GAMES.</p>
     </div>
-
+<div class="rating-summary">
+    <h3 id="averageRating">0.0 / 5</h3>
+    <div id="averageStars">☆☆☆☆☆</div>
+    <p><span id="totalReviews">0</span> Player Reviews</p>
+</div>
     <div id="reviewsList" class="reviews-list">
         <p>Loading player reviews...</p>
     </div>
@@ -316,7 +320,27 @@ async function loadReviews() {
         console.error("Reviews Error:", error);
         return;
     }
+// CALCULATE AVERAGE RATING
 
+const total = data ? data.length : 0;
+
+const average = total > 0
+    ? data.reduce(function (sum, item) {
+        return sum + Number(item.rating);
+    }, 0) / total
+    : 0;
+
+document.getElementById("averageRating").textContent =
+    average.toFixed(1) + " / 5";
+
+document.getElementById("totalReviews").textContent = total;
+
+const roundedRating = Math.round(average);
+
+document.getElementById("averageStars").textContent =
+    "★".repeat(roundedRating) +
+    "☆".repeat(5 - roundedRating);
+    
     if (!data || data.length === 0) {
         reviewsList.textContent = "No reviews yet. Be the first to share your experience!";
         return;
