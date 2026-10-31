@@ -513,3 +513,97 @@ footer {
     font-size: 15px;
     line-height: 1.7;
 }
+.game-search input {
+    width: 100%;
+    padding: 16px 20px;
+    background: #121a2b;
+    border: 1px solid #343e59;
+    border-radius: 8px;
+    color: white;
+    font-size: 15px;
+    outline: none;
+    transition: 0.3s ease;
+}
+
+.game-search input:focus {
+    border-color: #b78aff;
+    box-shadow: 0 0 15px #a16af255;
+}
+
+.game-search input::placeholder {
+    color: #929bad;
+}
+
+#searchMessage {
+    color: #c49aff;
+    font-size: 14px;
+    margin-top: 15px;
+    text-align: center;
+    min-height: 20px;
+}
+/* GAME SEARCH SYSTEM */
+
+.game-search {
+    max-width: 320px;
+    margin: 30px 0 0 auto;
+    text-align: right;
+}
+
+.game-search input {
+    width: 100%;
+    padding: 14px 18px;
+    background: #121a2b;
+    border: 1px solid #343e59;
+    border-radius: 8px;
+    color: white;
+    font-size: 14px;
+    outline: none;
+    transition: 0.3s ease;
+}
+
+.game-search input:focus {
+    border-color: #b78aff;
+    box-shadow: 0 0 15px #a16af255;
+}
+
+.game-search input::placeholder {
+    color: #929bad;
+}
+
+#searchMessage {
+    color: #c49aff;
+    font-size: 13px;
+    margin-top: 10px;
+    min-height: 18px;
+}/* NAVBAR SEARCH */
+
+.navbar-search {
+    width: 250px;
+}
+
+.navbar-search input {
+    width: 100%;
+    padding: 12px 15px;
+    background: #121a2b;
+    border: 1px solid #343e59;
+    border-radius: 6px;
+    color: #ffffff;
+    font-size: 13px;
+    outline: none;
+    transition: 0.3s ease;
+}
+
+.navbar-search input:focus {
+    border-color: #b78aff;
+    box-shadow: 0 0 12px #a16af255;
+}
+
+.navbar-search input::placeholder {
+    color: #929bad;
+}
+@media (max-width: 768px) {
+    .navbar-search {
+        width: 100%;
+        order: 3;
+    }
+}
