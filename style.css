@@ -607,3 +607,204 @@ footer {
         order: 3;
     }
 }
+/* GAME CATEGORY FILTERS */
+
+.game-filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 35px auto;
+    padding: 0 15px;
+}
+
+.filter-btn {
+    padding: 12px 25px;
+    background: #121a2b;
+    color: #aeb8cc;
+    border: 1px solid #343e59;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.filter-btn:hover {
+    color: #ffffff;
+    border-color: #a16aff;
+    box-shadow: 0 0 12px #a16aff55;
+    transform: translateY(-3px);
+}
+
+.filter-btn.active {
+    background: linear-gradient(135deg, #8247e5, #b36aff);
+    color: #ffffff;
+    border-color: #b36aff;
+    box-shadow: 0 0 15px #a16aff66;
+}
+
+@media (max-width: 600px) {
+    .game-filters {
+        gap: 10px;
+    }
+
+    .filter-btn {
+        padding: 10px 16px;
+        font-size: 11px;
+    }
+}
+/* POPULAR GAME BADGE */
+
+.popular-badge {
+    display: inline-block;
+    padding: 7px 12px;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #8247e5, #b36aff);
+    color: #ffffff;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 0 12px #a16af255;
+}
+/* PLAYER FEEDBACK SECTION */
+
+.feedback-section {
+    padding: 80px 20px;
+    background: #0d1220;
+    text-align: center;
+}
+
+.feedback-form {
+    max-width: 600px;
+    margin: 40px auto 0;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    background: #121a2b;
+    border: 1px solid #343e59;
+    border-radius: 12px;
+}
+
+.feedback-form input,
+.feedback-form select,
+.feedback-form textarea {
+    width: 100%;
+    padding: 15px;
+    background: #080b14;
+    color: #ffffff;
+    border: 1px solid #343e59;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    font-family: Arial, sans-serif;
+}
+
+.feedback-form input:focus,
+.feedback-form select:focus,
+.feedback-form textarea:focus {
+    border-color: #b78aff;
+    box-shadow: 0 0 12px #a16af255;
+}
+
+.feedback-form textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+.feedback-form button {
+    padding: 15px;
+    background: linear-gradient(135deg, #8247e5, #b36aff);
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.feedback-form button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px #a16af255;
+}
+
+#feedbackMessage {
+    margin-top: 18px;
+    color: #c49aff;
+    font-size: 14px;
+}
+
+@media (max-width: 600px) {
+    .feedback-form {
+        padding: 20px;
+    }
+}
+/* PLAYER REVIEWS SECTION */
+
+.reviews-section {
+    padding: 80px 8%;
+    background: #0b0e18;
+}
+
+.reviews-section .section-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.reviews-section .section-header h2 {
+    font-size: 36px;
+    color: #ffffff;
+    margin-bottom: 12px;
+}
+
+.reviews-section .section-header p {
+    color: #aab0c0;
+    font-size: 15px;
+}
+
+.reviews-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 22px;
+}
+
+.review-card {
+    background: #121827;
+    border: 1px solid #252e43;
+    border-radius: 14px;
+    padding: 25px;
+    transition: 0.3s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+    border-color: #8b5cf6;
+    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.15);
+}
+
+.review-card h3 {
+    color: #ffffff;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.review-rating {
+    color: #ffc857;
+    margin-bottom: 15px;
+}
+
+.review-comment {
+    color: #c5cada;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+    margin-bottom: 18px;
+}
+
+.review-card small {
+    color: #818ba1;
+    font-size: 12px;
+}

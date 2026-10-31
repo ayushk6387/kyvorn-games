@@ -117,10 +117,33 @@
     </div>
 
     <p id="searchMessage" aria-live="polite"></p>
+    <div class="game-filters">
+
+    <button class="filter-btn active" data-filter="all">
+        ALL GAMES
+    </button>
+
+    <button class="filter-btn" data-filter="adventure">
+        ADVENTURE
+    </button>
+
+    <button class="filter-btn" data-filter="action">
+        ACTION
+    </button>
+
+    <button class="filter-btn" data-filter="racing">
+        RACING
+    </button>
+
+    <button class="filter-btn" data-filter="puzzle">
+        PUZZLE
+    </button>
+
+</div>
 
     <div class="games-grid">
 
-        <div class="game-card">
+        <div class="game-card" data-category="adventure">
 
             <img
                 src="https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=648&h=364&q=75"
@@ -138,6 +161,10 @@
             <div class="game-info">
 
                 <span class="game-category">ADVENTURE</span>
+
+                <div class="popular-badge">
+                 ⭐ POPULAR GAME
+                </div>
 
                 <div class="game-status">● AVAILABLE</div>
 
@@ -182,6 +209,61 @@
 
 </section>
 
+<section class="feedback-section" id="feedback">
+
+    <div class="section-heading">
+        <span>PLAYER FEEDBACK</span>
+        <h2>SHARE YOUR <span>EXPERIENCE</span></h2>
+        <p>Tell us what you think about our games.</p>
+    </div>
+
+    <form class="feedback-form" id="feedbackForm">
+
+        <input
+            type="text"
+            id="playerName"
+            placeholder="Enter a nickname (no real name)"
+            maxlength="30"
+            required
+        >
+
+        <select id="gameRating" required>
+            <option value="">Select your rating</option>
+            <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+            <option value="4">⭐⭐⭐⭐ Very Good</option>
+            <option value="3">⭐⭐⭐ Good</option>
+            <option value="2">⭐⭐ Needs Improvement</option>
+            <option value="1">⭐ Poor</option>
+        </select>
+
+        <textarea
+            id="playerReview"
+            placeholder="Write your feedback..."
+            maxlength="500"
+            required
+        ></textarea>
+
+        <button type="submit">SUBMIT FEEDBACK</button>
+
+    </form>
+
+    <p id="feedbackMessage"></p>
+
+</section>
+
+<!-- PLAYER REVIEWS SECTION -->
+
+<section class="reviews-section" id="reviews">
+    <div class="section-header">
+        <h2>PLAYER REVIEWS</h2>
+        <p>See what our players think about KYVORN GAMES.</p>
+    </div>
+
+    <div id="reviewsList" class="reviews-list">
+        <p>Loading player reviews...</p>
+    </div>
+</section>
+
 <section class="games-section" id="about">
 
     <div class="section-heading">
@@ -206,10 +288,159 @@
 </footer>
 
 <script>
+const SUPABASE_URL = "https://hdvhpbanxqymnvygfvnp.supabase.co";
+const SUPABASE_KEY = "sb_publishable_fkVyfSA1THjqZKHRO6KilA_SraO5IwP";
+const supabaseScript = document.createElement("script");
+supabaseScript.src = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2";
+supabaseScript.onload = function () {
+    window.supabaseClient = window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+    console.log("Supabase Connected Successfully!");
+    // LOAD PLAYER REVIEWS
+
+const reviewsList = document.getElementById("reviewsList");
+
+async function loadReviews() {
+
+    reviewsList.textContent = "Loading player reviews...";
+
+    const { data, error } = await window.supabaseClient
+        .from("game_reviews")
+        .select("player_name, rating, review, created_at")
+        .order("created_at", { ascending: false });
+
+    if (error) {
+        reviewsList.textContent = "Unable to load reviews. Please try again later.";
+        console.error("Reviews Error:", error);
+        return;
+    }
+
+    if (!data || data.length === 0) {
+        reviewsList.textContent = "No reviews yet. Be the first to share your experience!";
+        return;
+    }
+
+    reviewsList.replaceChildren();
+
+    data.forEach(function (item) {
+
+        const reviewCard = document.createElement("div");
+        reviewCard.className = "review-card";
+
+        const name = document.createElement("h3");
+        name.textContent = item.player_name;
+
+        const rating = document.createElement("p");
+        rating.className = "review-rating";
+        rating.textContent = "⭐".repeat(Number(item.rating));
+
+        const comment = document.createElement("p");
+        comment.className = "review-comment";
+        comment.textContent = item.review;
+
+        const date = document.createElement("small");
+        date.textContent = new Date(item.created_at).toLocaleDateString("en-IN");
+
+        reviewCard.append(name, rating, comment, date);
+        reviewsList.appendChild(reviewCard);
+
+    });
+
+}
+
+loadReviews();
+    const feedbackForm = document.getElementById("feedbackForm");
+const feedbackMessage = document.getElementById("feedbackMessage");
+
+feedbackForm.addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const playerName = document.getElementById("playerName").value.trim();
+    const rating = Number(document.getElementById("gameRating").value);
+    const review = document.getElementById("playerReview").value.trim();
+
+    if (playerName.length < 1 || playerName.length > 30 || review.length < 5) {
+        feedbackMessage.textContent = "Please enter a nickname (max 30 characters) and a review of at least 5 characters.";
+        return;
+    }
+
+    feedbackMessage.textContent = "Submitting feedback...";
+
+    const { error } = await window.supabaseClient
+        .from("game_reviews")
+        .insert([{
+            player_name: playerName,
+            rating: rating,
+            review: review
+        }]);
+
+    if (error) {
+        feedbackMessage.textContent = "Submission failed. Please try again.";
+        console.error(error);
+        return;
+    }
+
+    feedbackMessage.textContent = "Thank you! Your feedback was submitted successfully.";
+    feedbackForm.reset();
+});
+};
+document.head.appendChild(supabaseScript);
 const searchInput = document.getElementById("gameSearch");
 const gameCards = document.querySelectorAll(".game-card");
 const searchMessage = document.getElementById("searchMessage");
 
+const filterButtons = document.querySelectorAll(".filter-btn");
+
+let activeFilter = "all";
+
+filterButtons.forEach(function (button) {
+
+    button.addEventListener("click", function () {
+
+        activeFilter = this.dataset.filter;
+
+        filterButtons.forEach(function (btn) {
+            btn.classList.remove("active");
+        });
+
+        this.classList.add("active");
+
+        filterGames();
+
+    });
+
+});
+
+function filterGames() {
+
+    const searchValue = searchInput.value.toLowerCase().trim();
+    let visibleGames = [];
+
+    gameCards.forEach(function (card) {
+
+        const gameText = card.innerText.toLowerCase();
+        const matchesSearch = gameText.includes(searchValue);
+
+        const matchesCategory =
+            activeFilter === "all" ||
+            card.dataset.category === activeFilter;
+
+        if (matchesSearch && matchesCategory) {
+            card.style.display = "";
+            visibleGames.push(card);
+        } else {
+            card.style.display = "none";
+        }
+
+    });
+
+    searchMessage.textContent = visibleGames.length === 0
+        ? "No Games Found. Try another search."
+        : "";
+
+}
 searchInput.addEventListener("input", function () {
 
     const searchValue = this.value.toLowerCase().trim();
