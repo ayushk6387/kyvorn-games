@@ -65,7 +65,7 @@ nav a:hover {
 
 .explore-btn {
     display: inline-block;
-    background: #6f35c5;
+    background: #54259c;
     color: #ffffff;
     padding: 13px 22px;
     border-radius: 5px;
@@ -132,7 +132,7 @@ nav a:hover {
 
 .play-btn {
     display: inline-block;
-    background: #6f35c5;
+    background: #54259c;
     color: #ffffff;
     padding: 16px 28px;
     text-decoration: none;
@@ -186,7 +186,7 @@ nav a:hover {
     margin-bottom: 12px;
 }
 
-.feature-item h3 {
+.feature-item h2 {
     font-size: 14px;
     letter-spacing: 1px;
     color: #d0b0ff;
@@ -297,7 +297,7 @@ nav a:hover {
 
 .game-info a {
     display: inline-block;
-    background: #6f35c5;
+    background: #54259c;
     color: #ffffff;
     padding: 12px 20px;
     border-radius: 4px;
