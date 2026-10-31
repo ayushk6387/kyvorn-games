@@ -31,7 +31,7 @@
   fetchpriority="high"
 >
 
-<link rel="stylesheet" href="style.css?v=3">
+<link rel="stylesheet" href="style.css?v=4">
 
 <script type="application/ld+json">
 {
@@ -260,6 +260,12 @@
         <h2>PLAYER REVIEWS</h2>
         <p>See what our players think about KYVORN GAMES.</p>
     </div>
+        <div class="review-filter">
+        <label for="reviewsGame">Choose Game:</label>
+        <select id="reviewsGame">
+            <option value="jungle-quest">Jungle Quest</option>
+        </select>
+    </div>
 <div class="rating-summary">
     <h3 id="averageRating">0.0 / 5</h3>
     <div id="averageStars">☆☆☆☆☆</div>
@@ -380,7 +386,12 @@ document.getElementById("averageStars").textContent =
 }
 
 loadReviews();
-    const feedbackForm = document.getElementById("feedbackForm");
+
+document.getElementById("reviewsGame").addEventListener("change", function () {
+    loadReviews();
+});
+
+const feedbackForm = document.getElementById("feedbackForm");
 const feedbackMessage = document.getElementById("feedbackMessage");
 
 feedbackForm.addEventListener("submit", async function(event) {
