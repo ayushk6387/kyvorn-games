@@ -482,3 +482,34 @@ footer {
     padding: 8px 10px;
     border-radius: 5px;
 }
+/* GAME FAQ SECTION */
+
+.game-faq {
+    max-width: 850px;
+    margin: 45px auto;
+    padding: 25px;
+    text-align: left;
+    background: #111827;
+    border: 1px solid #273449;
+    border-radius: 14px;
+}
+
+.game-faq h2 {
+    color: #a78bfa;
+    font-size: 26px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.game-faq h3 {
+    color: #ffffff;
+    font-size: 18px;
+    margin-top: 22px;
+    margin-bottom: 8px;
+}
+
+.game-faq p {
+    color: #cbd5e1;
+    font-size: 15px;
+    line-height: 1.7;
+}

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -312,6 +313,84 @@ button:hover {
     display: none;
   }
 }
+
+/* GAME DESCRIPTION SECTION */
+
+.game-description {
+    max-width: 850px;
+    margin: 40px auto;
+    padding: 25px;
+    text-align: left;
+    background: #111827;
+    border: 1px solid #273449;
+    border-radius: 14px;
+}
+
+.game-description h2 {
+    color: #a78bfa;
+    font-size: 24px;
+    margin: 22px 0 12px;
+}
+
+.game-description p {
+    color: #cbd5e1;
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 18px;
+}
+
+/* GAME FAQ SECTION */
+
+.game-faq {
+    max-width: 850px;
+    margin: 45px auto;
+    padding: 25px;
+    text-align: left;
+    background: #111827;
+    border: 1px solid #273449;
+    border-radius: 14px;
+}
+
+.game-faq h2 {
+    color: #a78bfa;
+    font-size: 26px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.game-faq h3 {
+    color: #ffffff;
+    font-size: 18px;
+    margin-top: 22px;
+    margin-bottom: 8px;
+}
+
+.game-faq p {
+    color: #cbd5e1;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+/* MOBILE RESPONSIVE */
+
+@media (max-width: 768px) {
+    .game-description,
+    .game-faq {
+        margin: 25px 15px;
+        padding: 20px;
+    }
+
+    .game-description h2,
+    .game-faq h2 {
+        font-size: 21px;
+    }
+
+    .game-description p,
+    .game-faq p {
+        font-size: 14px;
+    }
+}
+
 </style>
 <script type="application/ld+json">
 {
@@ -329,10 +408,16 @@ button:hover {
 }
 </script>
 </head>
+
 <body>
 <h1>JUNGLE QUEST</h1>
-<p class="game-subtitle">ENTER THE WILD • SURVIVE THE DARKNESS • DEFEAT THE BOSS</p>
+
+<p class="game-subtitle">
+    ENTER THE WILD • SURVIVE THE DARKNESS • DEFEAT THE BOSS
+</p>
+
 <p>Dark Fantasy • Boss Fight Edition</p>
+
 <div id="gameArea">
   <canvas id="game" width="960" height="480"></canvas>
 
@@ -347,20 +432,25 @@ button:hover {
     </div>
   </div>
 </div>
+
 <button id="pauseBtn" onclick="togglePause()">⏸ PAUSE</button>
 <button id="fullscreenBtn" onclick="toggleFullscreen()">⛶ FULLSCREEN</button>
+
 <button class="home-btn" onclick="window.location.href='index.html'">
     ← HOME
 </button>
+
 <p id="status">Defeat the monsters and face the ancient boss!</p>
+
 <div>
-<button id="left">◀ Left</button>
-<button id="right">Right ▶</button>
-<button id="jump">⬆ Jump</button>
-<button id="attack">⚔ Attack</button>
-<button id="interact">E — Interact</button>
-<button id="restart">↻ Restart</button>
+    <button id="left">◀ Left</button>
+    <button id="right">Right ▶</button>
+    <button id="jump">⬆ Jump</button>
+    <button id="attack">⚔ Attack</button>
+    <button id="interact">E — Interact</button>
+    <button id="restart">↻ Restart</button>
 </div>
+
 <p class="controls-info">
   ⌨️ A / D or ← / → : Move |
   SPACE / W / ↑ : Jump |
@@ -368,6 +458,49 @@ button:hover {
   E : Interact |
   🖱️ Mouse : Select Level / Toggle Sound
 </p>
+
+<section class="game-description">
+    <h2>About Jungle Quest – Free Online Adventure Game</h2>
+
+    <p>
+        Jungle Quest is a free online browser adventure game where
+        players explore a mysterious dark fantasy world, fight dangerous
+        monsters, collect hidden coins and challenge powerful bosses.
+        Explore different environments, unlock new levels and discover
+        exciting adventures without downloading any software.
+    </p>
+
+    <h2>Explore the Dark Jungle and Crystal Cave</h2>
+
+    <p>
+        Explore mysterious environments, overcome enemies, collect coins
+        and face challenging bosses as you progress through Jungle Quest.
+    </p>
+
+    <h2>How to Play Jungle Quest</h2>
+
+    <p>
+        Move through the world, defeat enemies, collect every coin,
+        defeat the ancient guardian and unlock the treasure chest
+        to reach the next level.
+    </p>
+</section>
+
+<section class="game-faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <h3>Is Jungle Quest free to play?</h3>
+    <p>Yes, Jungle Quest is free to play directly in your web browser.</p>
+
+    <h3>Do I need to download Jungle Quest?</h3>
+    <p>No, you can play Jungle Quest online without downloading any software.</p>
+
+    <h3>How do I defeat the boss?</h3>
+    <p>Defeat enemies, collect coins, avoid attacks and use your controls carefully to challenge the boss.</p>
+
+    <h3>Can I play Jungle Quest on mobile?</h3>
+    <p>Yes, Jungle Quest includes touch controls for mobile devices.</p>
+</section>
 
 <script>
 const canvas=document.getElementById("game");
