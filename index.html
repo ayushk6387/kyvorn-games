@@ -31,7 +31,7 @@
   fetchpriority="high"
 >
 
-<link rel="stylesheet" href="style.css?v=2">
+<link rel="stylesheet" href="style.css?v=3">
 
 <script type="application/ld+json">
 {
@@ -340,7 +340,7 @@ const roundedRating = Math.round(average);
 document.getElementById("averageStars").textContent =
     "★".repeat(roundedRating) +
     "☆".repeat(5 - roundedRating);
-    
+
     if (!data || data.length === 0) {
         reviewsList.textContent = "No reviews yet. Be the first to share your experience!";
         return;
