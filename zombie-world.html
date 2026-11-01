@@ -623,13 +623,130 @@ body {
 
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js';
 import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/loaders/GLTFLoader.js';
+import { mergeGeometries } from 'https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/utils/BufferGeometryUtils.js';
 const gltfLoader = new GLTFLoader();
+function mergeBuildingMeshes(building) {
+    building.updateMatrixWorld(true);
+
+    const buckets = new Map();
+
+    building.traverse((child) => {
+        if (!child.isMesh || child.isSkinnedMesh || child.isInstancedMesh) return;
+        if (!child.visible || !child.material || Array.isArray(child.material)) return;
+
+        if (
+            child.name.includes("guard_front_picket") ||
+            child.name.includes("guard_side_picket")
+        ) return;
+
+        const geometry = child.geometry;
+
+        if (
+            !geometry ||
+            geometry.groups.length > 0 ||
+            Object.keys(geometry.morphAttributes).length > 0
+        ) return;
+
+        const attributes = Object.entries(geometry.attributes);
+
+        if (attributes.some(([name, attr]) => attr.isInterleavedBufferAttribute)) return;
+
+        const signature = attributes
+            .map(([name, attr]) =>
+                `${name}:${attr.itemSize}:${attr.normalized}:${attr.array.constructor.name}`
+            )
+            .sort()
+            .join("|");
+
+        const key = child.material.uuid + "|" + signature + "|index:" + !!geometry.index;
+
+        if (!buckets.has(key)) {
+            buckets.set(key, {
+                material: child.material,
+                geometries: [],
+                meshes: []
+            });
+        }
+
+        const bucket = buckets.get(key);
+        const copy = geometry.clone();
+
+        copy.applyMatrix4(child.matrixWorld);
+
+        bucket.geometries.push(copy);
+        bucket.meshes.push(child);
+    });
+
+    buckets.forEach((bucket) => {
+        const merged = mergeGeometries(bucket.geometries, false);
+
+        if (!merged) {
+            bucket.geometries.forEach(geometry => geometry.dispose());
+            return;
+        }
+
+        const mergedMesh = new THREE.Mesh(merged, bucket.material);
+
+        mergedMesh.name = "Merged_Building_Mesh";
+        mergedMesh.castShadow = false;
+        mergedMesh.receiveShadow = false;
+
+        building.add(mergedMesh);
+
+        bucket.meshes.forEach((mesh) => {
+            mesh.parent.remove(mesh);
+        });
+
+        bucket.geometries.forEach(geometry => geometry.dispose());
+    });
+}
 
 // ==============================
 // SCENE SETUP
 // ==============================
 
 const scene = new THREE.Scene();
+const cityBuildings = [];
+function updateCityBuildingVisibility() {
+    const maxDistance = 140;
+    const detailDistance = 55;
+
+    cityBuildings.forEach((building) => {
+        const distance = Math.hypot(
+            building.position.x - player.position.x,
+            building.position.z - player.position.z
+        );
+
+        building.visible = distance < maxDistance;
+
+        if (!building.visible) return;
+
+        const lowDetail = distance > detailDistance;
+
+        if (building.userData.lowDetail !== lowDetail) {
+
+            building.traverse((child) => {
+                if (!child.isMesh) return;
+
+                const isPicket =
+                    child.name.includes("guard_front_picket") ||
+                    child.name.includes("guard_side_picket");
+
+                if (isPicket) {
+                    child.visible = lowDetail
+                        ? false
+                        : child.userData.originalVisible;
+                }
+            });
+
+            building.userData.lowDetail = lowDetail;
+        }
+    });
+}
+function addCityBuilding(buildingObject) {
+    scene.add(buildingObject);
+    cityBuildings.push(buildingObject);
+}
 // GRAPHICS QUALITY SYSTEM
 
 let graphicsQuality = "high";
@@ -682,10 +799,13 @@ console.log("BUILDING VERTICES:", totalVertices);
     if (child.isMesh) {
         child.material.roughness = 0.85;
         child.material.metalness = 0.05;
+        child.userData.originalVisible = child.visible;
     }
 
 });
         building.visible = true;
+
+        mergeBuildingMeshes(building);
 
         building.traverse((child) => {
 
@@ -699,64 +819,65 @@ console.log("BUILDING VERTICES:", totalVertices);
         building.scale.setScalar(1.5);
         building.position.set(25, 0, -25);
 
-        scene.add(building);
+        addCityBuilding(building);
         
         // CITY BUILDING CLONES
 
 const building2 = building.clone();
 building2.position.set(-25, 0, -25);
 building2.scale.setScalar(1.2);
-scene.add(building2);
+addCityBuilding(building2);
 
 const building3 = building.clone();
 building3.position.set(30, 0, -100);
 building3.scale.setScalar(1.8);
-scene.add(building3);
+addCityBuilding(building3);
 
 const building4 = building.clone();
 building4.position.set(-20, 0, -100);
 building4.scale.setScalar(0.85);
-scene.add(building4);
+addCityBuilding(building4);
+
 const building5 = building.clone();
 building5.position.set(25, 0, -175);
 building5.scale.setScalar(1.4);
-scene.add(building5);
+addCityBuilding(building5);
 
 const building6 = building.clone();
 building6.position.set(-20, 0, -175);
 building6.scale.setScalar(0.9);
-scene.add(building6);
+addCityBuilding(building6);
 
 const building7 = building.clone();
 building7.position.set(33, 0, -250);
 building7.scale.setScalar(2);
-scene.add(building7);
+addCityBuilding(building7);
 
 const building8 = building.clone();
 building8.position.set(-21, 0, -250);
 building8.scale.setScalar(1.1);
-scene.add(building8);
+addCityBuilding(building8);
 // SECOND CITY ROW
 
 const building9 = building.clone();
 building9.position.set(55, 0, -50);
 building9.scale.setScalar(1.3);
-scene.add(building9);
+addCityBuilding(building9);
 
 const building10 = building.clone();
 building10.position.set(-55, 0, -50);
 building10.scale.setScalar(1.5);
-scene.add(building10);
+addCityBuilding(building10);
 
 const building11 = building.clone();
 building11.position.set(55, 0, -150);
 building11.scale.setScalar(1.7);
-scene.add(building11);
+addCityBuilding(building11);
 
 const building12 = building.clone();
 building12.position.set(-55, 0, -150);
 building12.scale.setScalar(1.2);
-scene.add(building12);
+addCityBuilding(building12);
         
         // EXTRA CITY BUILDINGS
 
@@ -778,7 +899,7 @@ extraBuildingPositions.forEach((pos) => {
     extraBuilding.position.set(pos[0], 0, pos[1]);
     extraBuilding.scale.setScalar(pos[2]);
 
-    scene.add(extraBuilding);
+    addCityBuilding(extraBuilding);
 
 });
         console.log("NEW APARTMENT BUILDING LOADED");
@@ -2441,12 +2562,22 @@ function animate(timestamp) {
     updateCamera();
 
     movePlayer(deltaScale);
+    updateCityBuildingVisibility();
     drawMiniMap();
 
     animateZombies(deltaScale);
     drawMiniMap();
 
     renderer.render(scene, camera);
+    console.log(
+    "DRAW CALLS:",
+    renderer.info.render.calls,
+    "TRIANGLES:",
+    renderer.info.render.triangles
+);
+
+renderer.info.reset();
+    renderer.info.autoReset = false;
 
     // UPDATE LIVE FPS
     fpsFrameCount++;
