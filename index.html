@@ -485,44 +485,24 @@ function filterGames() {
 
 }
 searchInput.addEventListener("input", function () {
+    filterGames();
 
-    const searchValue = this.value.toLowerCase().trim();
-    let visibleGames = [];
+    const searchValue = searchInput.value.trim();
 
-    gameCards.forEach(function (card) {
+    if (searchValue) {
+        const visibleGame = Array.from(gameCards).find(function (card) {
+            return card.style.display !== "none";
+        });
 
-        const gameText = card.innerText.toLowerCase();
-
-        if (gameText.includes(searchValue)) {
-            card.style.display = "";
-            visibleGames.push(card);
-        } else {
-            card.style.display = "none";
-        }
-
-    });
-
-    if (visibleGames.length === 0) {
-
-        searchMessage.textContent = searchValue
-            ? "No Games Found. Try another search."
-            : "";
-
-    } else {
-
-        searchMessage.textContent = "";
-
-        if (searchValue) {
+        if (visibleGame) {
             setTimeout(function () {
-                visibleGames[0].scrollIntoView({
+                visibleGame.scrollIntoView({
                     behavior: "smooth",
                     block: "center"
                 });
-            }, 100);
+            }, 150);
         }
-
     }
-
 });
 </script>
 
