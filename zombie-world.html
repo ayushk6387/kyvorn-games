@@ -78,8 +78,325 @@ body {
     border-color: #00ff66;
     box-shadow: 0 0 12px rgba(0, 255, 102, 0.3);
 }
+/* SETTINGS BUTTON */
 
+#settings-btn {
+    position: absolute;
+    top: 25px;
+    right: 125px;
+    width: 48px;
+    height: 48px;
+    background: rgba(15, 20, 18, 0.9);
+    color: white;
+    border: 1px solid #8caa96;
+    border-radius: 8px;
+    font-size: 25px;
+    cursor: pointer;
+    z-index: 30;
+}
+/* LIVE FPS COUNTER */
+
+#live-fps {
+    position: fixed;
+    left: 15px;
+    bottom: 12px;
+    z-index: 50;
+    padding: 6px 10px;
+    background: rgba(0, 0, 0, 0.75);
+    color: #65ff8b;
+    border: 1px solid rgba(101, 255, 139, 0.5);
+    border-radius: 5px;
+    font-family: monospace;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    pointer-events: none;
+}
+
+/* SETTINGS MENU */
+
+#settings-menu {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(90%, 420px);
+    padding: 25px;
+    background: rgba(10, 15, 12, 0.97);
+    border: 1px solid #526b58;
+    border-radius: 12px;
+    color: white;
+    z-index: 100;
+    box-shadow: 0 0 35px rgba(0,0,0,0.8);
+}
+
+.settings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.settings-header h2 {
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+
+#close-settings {
+    background: transparent;
+    color: white;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+#settings-menu h3 {
+    font-size: 14px;
+    color: #aab5aa;
+    margin-bottom: 15px;
+}
+
+#settings-menu .graphics-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+#settings-menu .graphics-buttons button {
+    flex: 1;
+    padding: 13px 5px;
+    background: #202823;
+    color: white;
+    border: 1px solid #66776b;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#settings-menu .graphics-buttons button.active {
+    background: #285b39;
+    border-color: #65ff8b;
+}
+
+#settings-menu #quality-status {
+    margin-top: 15px;
+    color: #aab5aa;
+    font-size: 12px;
+}
+/* FPS LIMIT SETTINGS */
+
+.fps-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.fps-buttons button {
+    flex: 1;
+    padding: 13px 5px;
+    background: #202823;
+    color: white;
+    border: 1px solid #66776b;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.fps-buttons button.active {
+    background: #285b39;
+    border-color: #65ff8b;
+}
+
+#fps-status {
+    margin-top: 12px;
+    color: #aab5aa;
+    font-size: 12px;
+}
+
+/* GAME START SCREEN */
+
+#start-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.9)),
+                #080b0a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.start-content h1 {
+    font-size: clamp(30px, 6vw, 65px);
+    letter-spacing: 5px;
+    margin-bottom: 15px;
+}
+
+.start-content p {
+    color: #b8b8b8;
+    letter-spacing: 3px;
+    margin-bottom: 35px;
+}
+
+#start-game-btn {
+    padding: 16px 45px;
+    background: #a51d1d;
+    color: white;
+    border: 2px solid #ff5555;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    cursor: pointer;
+}
+
+#start-game-btn:active {
+    background: #e32626;
+}
+
+.start-content small {
+    display: block;
+    margin-top: 22px;
+    color: #999;
+    letter-spacing: 2px;
+}
+/* GRAPHICS SETTINGS */
+
+#graphics-panel {
+    margin-top: 35px;
+}
+
+#graphics-panel h2 {
+    font-size: 15px;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+    color: #cccccc;
+}
+
+.graphics-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.graphics-buttons button {
+    padding: 11px 18px;
+    background: #202823;
+    color: white;
+    border: 1px solid #66776b;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.graphics-buttons button.active {
+    background: #285b39;
+    border-color: #65ff8b;
+    box-shadow: 0 0 10px rgba(0,255,100,0.3);
+}
+
+#quality-status {
+    margin-top: 12px;
+    color: #aab5aa;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+/* MINI MAP */
+
+#mini-map {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    width: 180px;
+    height: 180px;
+    background: rgba(5, 12, 8, 0.9);
+    border: 2px solid #8caa96;
+    border-radius: 10px;
+    z-index: 15;
+    pointer-events: auto;
+}
+/* FULL WORLD MAP */
+
+#mini-map.full-map {
+    width: min(85vw, 650px);
+    height: min(85vw, 650px);
+    max-height: 85vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #263b2b;
+    border: 3px solid #65ff8b;
+    border-radius: 12px;
+    z-index: 150;
+    pointer-events: auto;
+    cursor: pointer;
+}
+/* MAP ZOOM BUTTONS */
+
+#map-zoom-controls {
+    display: none;
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    transform: translateY(-50%);
+    z-index: 160;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#mini-map.full-map ~ #map-zoom-controls {
+    display: flex;
+}
+
+#map-zoom-controls button {
+    width: 55px;
+    height: 55px;
+    background: rgba(10, 20, 15, 0.95);
+    color: #65ff8b;
+    border: 2px solid #65ff8b;
+    border-radius: 12px;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    touch-action: manipulation;
+}
 /* MOBILE GAME CONTROLS */
+
+
+#rotate-message {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: #080b0a;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 25px;
+}
+
+.rotate-icon {
+    font-size: 55px;
+    margin-bottom: 20px;
+}
+
+#rotate-message h2 {
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+#rotate-message p {
+    color: #aab5aa;
+    font-size: 14px;
+}
+
+@media (orientation: portrait) and (pointer: coarse) {
+    #rotate-message {
+        display: flex;
+    }
+}
 
 #mobile-controls {
     display: none;
@@ -128,8 +445,8 @@ body {
 
 #mobile-sprint {
     position: absolute;
-    right: 35px;
-    bottom: 45px;
+    left: 60px;
+    bottom: 175px;
     width: 75px;
     height: 75px;
     border-radius: 50%;
@@ -137,6 +454,43 @@ body {
     color: white;
     border: 2px solid #aaffaa;
     font-weight: bold;
+    pointer-events: auto;
+    z-index: 25;
+    isolation: isolate;
+    touch-action: none;
+}
+/* MOBILE JUMP BUTTON */
+
+#mobile-jump {
+    position: absolute;
+    right: 35px;
+    bottom: 145px;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background: rgba(30, 55, 90, 0.9);
+    color: white;
+    border: 2px solid #75baff;
+    font-weight: bold;
+    pointer-events: auto;
+    z-index: 25;
+    isolation: isolate;
+    touch-action: none;
+}
+/* MOBILE CROUCH BUTTON */
+
+#mobile-crouch {
+    position: absolute;
+    right: 125px;
+    bottom: 45px;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background: rgba(70, 65, 35, 0.9);
+    color: white;
+    border: 2px solid #e5d477;
+    font-weight: bold;
+    font-size: 11px;
     pointer-events: auto;
     z-index: 25;
     isolation: isolate;
@@ -164,11 +518,83 @@ body {
 <body>
 
 <div id="game-container">
-    <h1 id="game-title">ZOMBIE SURVIVAL</h1>
-    <div id="status">CLICK GAME TO START</div>
-    <button id="camera-switch">FPP</button>
+<!-- GAME START SCREEN -->
+<div id="start-screen">
+    <div class="start-content">
+        <h1>ZOMBIE SURVIVAL</h1>
+        <p>THE WORLD IS NO LONGER SAFE</p>
+
+        <button id="start-game-btn">START GAME</button>
+
+        <small>BEST EXPERIENCE IN LANDSCAPE MODE</small>
+
     
+    </div>
+</div>
+
+<h1 id="game-title">ZOMBIE SURVIVAL</h1>
+<!-- MINI MAP -->
+<canvas id="mini-map" width="180" height="180"></canvas>
+<div id="map-zoom-controls">
+    <button id="map-zoom-in">+</button>
+    <button id="map-zoom-out">−</button>
+</div>
+<div id="status">CLICK GAME TO START</div>
+<!-- LIVE FPS COUNTER -->
+<div id="live-fps">FPS: 60</div>
+<button id="camera-switch">FPP</button>
+<!-- SETTINGS BUTTON -->
+<button id="settings-btn">⚙</button>
+
+<!-- SETTINGS MENU -->
+<div id="settings-menu">
+    <div class="settings-header">
+        <h2>GAME SETTINGS</h2>
+        <button id="close-settings">✕</button>
+    </div>
+
+    <h3>GRAPHICS QUALITY</h3>
+
+    <div class="graphics-buttons">
+        <button id="quality-low">LOW</button>
+        <button id="quality-medium">MEDIUM</button>
+        <button id="quality-high">HIGH</button>
+    </div>
+
+    <p id="quality-status">CURRENT QUALITY: HIGH</p>
+<!-- FPS LIMIT SETTINGS -->
+
+<h3>FPS LIMIT</h3>
+
+<div class="fps-buttons">
+    <button id="fps-40">40 FPS</button>
+    <button id="fps-60">60 FPS</button>
+    <button id="fps-120">120 FPS</button>
+</div>
+
+<p id="fps-status">CURRENT FPS LIMIT: 60</p>
+<!-- CAMERA SENSITIVITY -->
+
+<h3>CAMERA SENSITIVITY</h3>
+
+<input
+    type="range"
+    id="camera-sensitivity"
+    min="0"
+    max="100"
+    value="50"
+>
+
+<p id="sensitivity-status">SENSITIVITY: 50</p>
+</div>
+
 <!-- MOBILE GAME CONTROLS -->
+
+<div id="rotate-message">
+    <div class="rotate-icon">📱 ↻</div>
+    <h2>PLEASE ROTATE YOUR DEVICE</h2>
+    <p>Zombie Survival is best played in landscape mode.</p>
+</div>
 
 <div id="mobile-controls">
 
@@ -177,6 +603,8 @@ body {
     </div>
 
     <button id="mobile-sprint">RUN</button>
+    <button id="mobile-jump">JUMP</button>
+    <button id="mobile-crouch">CROUCH</button>
 
     <div id="mobile-look"></div>
 
@@ -202,6 +630,32 @@ const gltfLoader = new GLTFLoader();
 // ==============================
 
 const scene = new THREE.Scene();
+// GRAPHICS QUALITY SYSTEM
+
+let graphicsQuality = "high";
+
+const graphicsSettings = {
+    low: {
+        shadows: false,
+        pixelRatio: 0.75,
+        grassDensity: 0.25,
+        renderDistance: 100
+    },
+
+    medium: {
+        shadows: true,
+        pixelRatio: 1,
+        grassDensity: 0.60,
+        renderDistance: 250
+    },
+
+    high: {
+        shadows: true,
+        pixelRatio: Math.min(window.devicePixelRatio, 1.5),
+        grassDensity: 1,
+        renderDistance: 500
+    }
+};
 // REALISTIC CITY BUILDING
 // NEW COMPLETE CITY BUILDING
 
@@ -210,12 +664,123 @@ gltfLoader.load(
 
     (gltf) => {
         const building = gltf.scene;
+        let totalMeshes = 0;
+let totalVertices = 0;
 
-        building.scale.setScalar(1);
-        building.position.set(20, 0, -25);
+building.traverse((child) => {
+    if (child.isMesh) {
+        totalMeshes++;
+
+        totalVertices += child.geometry.attributes.position.count;
+    }
+});
+
+console.log("BUILDING MESHES:", totalMeshes);
+console.log("BUILDING VERTICES:", totalVertices);
+        building.traverse((child) => {
+
+    if (child.isMesh) {
+        child.material.roughness = 0.85;
+        child.material.metalness = 0.05;
+    }
+
+});
+        building.visible = true;
+
+        building.traverse((child) => {
+
+    if (child.isMesh) {
+        child.castShadow = false;
+        child.receiveShadow = false;
+    }
+
+});
+
+        building.scale.setScalar(1.5);
+        building.position.set(25, 0, -25);
 
         scene.add(building);
+        return; // TEMPORARY TEST: skip all building clones
+        // CITY BUILDING CLONES
 
+const building2 = building.clone();
+building2.position.set(-25, 0, -25);
+building2.scale.setScalar(1.2);
+scene.add(building2);
+
+const building3 = building.clone();
+building3.position.set(30, 0, -100);
+building3.scale.setScalar(1.8);
+scene.add(building3);
+
+const building4 = building.clone();
+building4.position.set(-20, 0, -100);
+building4.scale.setScalar(0.85);
+scene.add(building4);
+const building5 = building.clone();
+building5.position.set(25, 0, -175);
+building5.scale.setScalar(1.4);
+scene.add(building5);
+
+const building6 = building.clone();
+building6.position.set(-20, 0, -175);
+building6.scale.setScalar(0.9);
+scene.add(building6);
+
+const building7 = building.clone();
+building7.position.set(33, 0, -250);
+building7.scale.setScalar(2);
+scene.add(building7);
+
+const building8 = building.clone();
+building8.position.set(-21, 0, -250);
+building8.scale.setScalar(1.1);
+scene.add(building8);
+// SECOND CITY ROW
+
+const building9 = building.clone();
+building9.position.set(55, 0, -50);
+building9.scale.setScalar(1.3);
+scene.add(building9);
+
+const building10 = building.clone();
+building10.position.set(-55, 0, -50);
+building10.scale.setScalar(1.5);
+scene.add(building10);
+
+const building11 = building.clone();
+building11.position.set(55, 0, -150);
+building11.scale.setScalar(1.7);
+scene.add(building11);
+
+const building12 = building.clone();
+building12.position.set(-55, 0, -150);
+building12.scale.setScalar(1.2);
+scene.add(building12);
+        
+        // EXTRA CITY BUILDINGS
+
+const extraBuildingPositions = [
+    [-35, -320, 1.2],
+    [35, -320, 1.4],
+    [-35, -380, 1.5],
+    [35, -380, 1.1],
+    [-35, -440, 1.3],
+    [35, -440, 1.6],
+    [-35, -500, 1.1],
+    [35, -500, 1.4]
+];
+
+extraBuildingPositions.forEach((pos) => {
+
+    const extraBuilding = building.clone();
+
+    extraBuilding.position.set(pos[0], 0, pos[1]);
+    extraBuilding.scale.setScalar(pos[2]);
+
+    scene.add(extraBuilding);
+
+});
         console.log("NEW APARTMENT BUILDING LOADED");
     },
 
@@ -243,26 +808,78 @@ const camera = new THREE.PerspectiveCamera(
 
 camera.position.set(0, 3, 8);
 
-
 // ==============================
 // RENDERER SETUP
 // ==============================
 
 const renderer = new THREE.WebGLRenderer({
-    antialias: true
+    antialias: graphicsQuality !== "low",
+    powerPreference: "high-performance"
 });
 
-renderer.setSize(window.innerWidth, window.innerHeight);
+function applyGraphicsQuality() {
 
-renderer.setPixelRatio(
-    Math.min(window.devicePixelRatio, 2)
-);
+    const settings = graphicsSettings[graphicsQuality];
+
+    // SCREEN QUALITY
+    renderer.setPixelRatio(settings.pixelRatio);
+
+    // SHADOW QUALITY
+    renderer.shadowMap.enabled = settings.shadows;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+    // RENDER SIZE
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    console.log("GRAPHICS QUALITY:", graphicsQuality);
+}
+// CHANGE GRAPHICS QUALITY
+
+function setGraphicsQuality(quality) {
+
+    if (!graphicsSettings[quality]) return;
+
+    graphicsQuality = quality;
+
+    applyGraphicsQuality();
+
+    document.getElementById("quality-status").textContent =
+        "CURRENT QUALITY: " + quality.toUpperCase();
+
+    document.querySelectorAll(".graphics-buttons button")
+        .forEach(button => {
+            button.classList.remove("active");
+        });
+
+    document.getElementById("quality-" + quality)
+        .classList.add("active");
+
+    console.log("QUALITY CHANGED TO:", quality.toUpperCase());
+}
+
+// GRAPHICS BUTTON EVENTS
+
+document.getElementById("quality-low").addEventListener("click", () => {
+    setGraphicsQuality("low");
+});
+
+document.getElementById("quality-medium").addEventListener("click", () => {
+    setGraphicsQuality("medium");
+});
+
+document.getElementById("quality-high").addEventListener("click", () => {
+    setGraphicsQuality("high");
+});
+
+// INITIAL QUALITY BUTTON
+
+document.getElementById("quality-high").classList.add("active");
+applyGraphicsQuality();
 
 renderer.domElement.id = "game-canvas";
 
 document.getElementById("game-container")
     .appendChild(renderer.domElement);
-
 
 // ==============================
 // LIGHTING
@@ -276,13 +893,32 @@ const light = new THREE.HemisphereLight(
 
 scene.add(light);
 
+// DIRECTIONAL SUN LIGHT
+
+const sunLight = new THREE.DirectionalLight(
+    0xffffff,
+    2
+);
+
+sunLight.position.set(80, 120, 50);
+sunLight.castShadow = true;
+
+sunLight.shadow.mapSize.set(1024, 1024);
+
+sunLight.shadow.camera.left = -150;
+sunLight.shadow.camera.right = 150;
+sunLight.shadow.camera.top = 150;
+sunLight.shadow.camera.bottom = -150;
+
+scene.add(sunLight);
+
 // ==============================
 // NEW OPEN WORLD TERRAIN
 // ==============================
 
 // MAIN LAND
 const ground = new THREE.Mesh(
-    new THREE.PlaneGeometry(600, 600),
+    new THREE.PlaneGeometry(5000, 5000),
     new THREE.MeshStandardMaterial({
         color: 0x526b45,
         roughness: 1
@@ -292,7 +928,7 @@ const ground = new THREE.Mesh(
 ground.rotation.x = -Math.PI / 2;
 ground.position.set(0, -0.1, -200);
 scene.add(ground);
-
+ground.receiveShadow = true;
 
 // ==============================
 // MAIN HIGHWAY
@@ -304,14 +940,14 @@ const roadMaterial = new THREE.MeshStandardMaterial({
 });
 
 const highway = new THREE.Mesh(
-    new THREE.PlaneGeometry(12, 500),
+    new THREE.PlaneGeometry(12, 5000),
     roadMaterial
 );
 
 highway.rotation.x = -Math.PI / 2;
 highway.position.set(0, 0.01, -200);
 scene.add(highway);
-
+highway.receiveShadow = true;
 
 // HIGHWAY ROAD MARKINGS
 
@@ -319,7 +955,7 @@ const lineMaterial = new THREE.MeshBasicMaterial({
     color: 0xe0dfbd
 });
 
-for (let z = 40; z > -440; z -= 12) {
+for (let z = 2400; z > -2600; z -= 12) {
 
     const line = new THREE.Mesh(
         new THREE.PlaneGeometry(0.18, 5),
@@ -332,6 +968,48 @@ for (let z = 40; z > -440; z -= 12) {
     scene.add(line);
 }
 
+// CITY SIDE ROADS
+
+const cityRoadGeometry = new THREE.PlaneGeometry(8, 420);
+
+const cityRoadLeft = new THREE.Mesh(
+    cityRoadGeometry,
+    roadMaterial
+);
+
+cityRoadLeft.rotation.x = -Math.PI / 2;
+cityRoadLeft.position.set(-85, 0.015, -120);
+scene.add(cityRoadLeft);
+
+
+const cityRoadRight = new THREE.Mesh(
+    cityRoadGeometry,
+    roadMaterial
+);
+
+cityRoadRight.rotation.x = -Math.PI / 2;
+cityRoadRight.position.set(85, 0.015, -120);
+scene.add(cityRoadRight);
+
+// CITY CONNECTING ROADS
+
+const connectingRoadGeometry = new THREE.PlaneGeometry(170, 8);
+
+const connectingRoadPositions = [-300, -180, -60, 60];
+
+connectingRoadPositions.forEach((z) => {
+
+    const road = new THREE.Mesh(
+        connectingRoadGeometry,
+        roadMaterial
+    );
+
+    road.rotation.x = -Math.PI / 2;
+    road.position.set(0, 0.02, z);
+
+    scene.add(road);
+
+});
 
 // ==============================
 // MOUNTAIN RANGE
@@ -374,6 +1052,8 @@ mountainData.forEach((data, index) => {
     );
 
     scene.add(mountain);
+    mountain.castShadow = true;
+mountain.receiveShadow = true;
 
 });
 
@@ -585,6 +1265,195 @@ const playerArms = [];
 
 player.position.set(0, 0, 3);
 scene.add(player);
+// MINI MAP SYSTEM
+
+const miniMap = document.getElementById("mini-map");
+const miniMapCtx = miniMap.getContext("2d");
+// FULL MAP ZOOM
+let fullMapZoom = 1;
+// MAP ZOOM CONTROLS
+
+miniMap.addEventListener("wheel", (event) => {
+
+    if (!miniMap.classList.contains("full-map")) return;
+
+    event.preventDefault();
+
+    if (event.deltaY < 0) {
+        fullMapZoom = Math.min(fullMapZoom + 0.2, 5);
+    } else {
+        fullMapZoom = Math.max(fullMapZoom - 0.2, 1);
+    }
+
+}, { passive: false });
+// PHONE MAP ZOOM BUTTONS
+
+const zoomInButton = document.getElementById("map-zoom-in");
+const zoomOutButton = document.getElementById("map-zoom-out");
+
+zoomInButton.addEventListener("click", (event) => {
+    event.stopPropagation();
+    fullMapZoom = Math.min(fullMapZoom + 0.25, 5);
+    drawMiniMap();
+});
+
+zoomOutButton.addEventListener("click", (event) => {
+    event.stopPropagation();
+    fullMapZoom = Math.max(fullMapZoom - 0.25, 1);
+    drawMiniMap();
+});
+// MINI MAP CLICK TO EXPAND
+
+miniMap.addEventListener("click", () => {
+
+    miniMap.classList.toggle("full-map");
+
+    if (miniMap.classList.contains("full-map")) {
+        miniMap.width = 650;
+        miniMap.height = 650;
+    } else {
+        miniMap.width = 180;
+        miniMap.height = 180;
+    }
+
+    drawMiniMap();
+
+});
+
+function drawMiniMap() {
+
+    const ctx = miniMapCtx;
+    const fullMap = miniMap.classList.contains("full-map");
+
+    const size = fullMap ? 650 : 180;
+    const center = size / 2;
+
+    ctx.clearRect(0, 0, size, size);
+
+    ctx.fillStyle = "#263b2b";
+    ctx.fillRect(0, 0, size, size);
+
+    if (fullMap) {
+
+        // FULL WORLD MAP - 5 KM x 5 KM
+
+        const scale = (size / 5000) * fullMapZoom;
+
+        function mapX(x) {
+    return center + (x - player.position.x) * scale;
+}
+
+        function mapZ(z) {
+    return center + (z - player.position.z) * scale;
+}
+
+        // MAIN HIGHWAY
+        ctx.fillStyle = "#555b58";
+        ctx.fillRect(
+            mapX(-6),
+            0,
+            12 * scale,
+            size
+        );
+
+        // CITY SIDE ROADS
+        ctx.fillRect(
+            mapX(-89),
+            mapZ(-330),
+            8 * scale,
+            420 * scale
+        );
+
+        ctx.fillRect(
+            mapX(81),
+            mapZ(-330),
+            8 * scale,
+            420 * scale
+        );
+
+        // CITY CONNECTING ROADS
+        const roadPositions = [-300, -180, -60, 60];
+
+        roadPositions.forEach((z) => {
+            ctx.fillRect(
+                mapX(-85),
+                mapZ(z),
+                170 * scale,
+                8 * scale
+            );
+        });
+
+        // PLAYER LOCATION
+        ctx.fillStyle = "#35ff70";
+        ctx.beginPath();
+        ctx.arc(
+            mapX(player.position.x),
+            mapZ(player.position.z),
+            7,
+            0,
+            Math.PI * 2
+        );
+        ctx.fill();
+
+        // PLAYER DIRECTION
+        ctx.strokeStyle = "#ffffff";
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+
+        ctx.moveTo(
+            mapX(player.position.x),
+            mapZ(player.position.z)
+        );
+
+        ctx.lineTo(
+            mapX(player.position.x) - Math.sin(player.rotation.y) * 24,
+            mapZ(player.position.z) - Math.cos(player.rotation.y) * 24
+        );
+
+        ctx.stroke();
+
+    } else {
+
+        // PLAYER-CENTRED MINI MAP
+
+        const scale = 1.5;
+
+        function mapX(x) {
+            return center + (x - player.position.x) * scale;
+        }
+
+        function mapZ(z) {
+            return center + (z - player.position.z) * scale;
+        }
+
+        // MAIN HIGHWAY
+        ctx.fillStyle = "#555b58";
+        ctx.fillRect(mapX(-6), 0, 12 * scale, size);
+
+        // CITY SIDE ROADS
+        ctx.fillRect(mapX(-89), mapZ(-330), 8 * scale, 420 * scale);
+        ctx.fillRect(mapX(81), mapZ(-330), 8 * scale, 420 * scale);
+
+        // PLAYER DOT
+        ctx.fillStyle = "#35ff70";
+        ctx.beginPath();
+        ctx.arc(center, center, 5, 0, Math.PI * 2);
+        ctx.fill();
+
+        // PLAYER DIRECTION
+        ctx.strokeStyle = "#ffffff";
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(center, center);
+
+        ctx.lineTo(
+            center - Math.sin(player.rotation.y) * 14,
+            center - Math.cos(player.rotation.y) * 14
+        );
+
+        ctx.stroke();
+    }
+}
 
 
 // ==============================
@@ -741,6 +1610,22 @@ createZombie(3, -55);
 // ZOMBIE RANDOM MOVEMENT
 // ==============================
 
+// PLAYER AND ZOMBIE SHADOWS
+
+player.traverse((child) => {
+    if (child.isMesh) {
+        child.castShadow = true;
+    }
+});
+
+zombies.forEach((zombie) => {
+    zombie.traverse((child) => {
+        if (child.isMesh) {
+            child.castShadow = true;
+        }
+    });
+});
+
 const zombieMovement = zombies.map((zombie, index) => ({
     direction: Math.random() * Math.PI * 2,
     speed: 0.025 + Math.random() * 0.015,
@@ -766,14 +1651,33 @@ let isMouseLocked = false;
 
 // MOUSE LOCK
 
-renderer.domElement.addEventListener("click", () => {
+
+renderer.domElement.addEventListener("click", async () => {
 
     if (!isMouseLocked) {
-        renderer.domElement.requestPointerLock();
+
+        if (window.matchMedia("(pointer: coarse)").matches) {
+
+            try {
+                if (!document.fullscreenElement) {
+                    await document.documentElement.requestFullscreen();
+                }
+
+                await enableLandscape();
+
+            } catch (error) {
+                console.log("Fullscreen or landscape unavailable:", error);
+            }
+
+        } else {
+
+            renderer.domElement.requestPointerLock();
+
+        }
+
     }
 
 });
-
 
 // POINTER LOCK STATUS
 
@@ -809,6 +1713,66 @@ document.addEventListener("mousemove", (event) => {
 
 });
 
+// SETTINGS MENU CONTROLS
+
+const settingsBtn = document.getElementById("settings-btn");
+const settingsMenu = document.getElementById("settings-menu");
+const closeSettings = document.getElementById("close-settings");
+
+settingsBtn.addEventListener("click", () => {
+    settingsMenu.style.display = "block";
+});
+
+closeSettings.addEventListener("click", () => {
+    settingsMenu.style.display = "none";
+});
+// CAMERA SENSITIVITY
+
+const cameraSensitivity = document.getElementById("camera-sensitivity");
+const sensitivityStatus = document.getElementById("sensitivity-status");
+
+cameraSensitivity.addEventListener("input", () => {
+    const value = Number(cameraSensitivity.value);
+
+    mouseSensitivity = value / 100 * 0.01;
+
+    sensitivityStatus.textContent =
+        "SENSITIVITY: " + value;
+});
+// FPS LIMIT SYSTEM
+
+let fpsLimit = 60;
+let lastFrameTime = 0;
+
+function setFPSLimit(fps) {
+    fpsLimit = fps;
+    lastFrameTime = 0;
+
+    document.getElementById("fps-status").textContent =
+        "CURRENT FPS LIMIT: " + fps;
+
+    document.querySelectorAll(".fps-buttons button")
+        .forEach(button => button.classList.remove("active"));
+
+    document.getElementById("fps-" + fps)
+        .classList.add("active");
+
+    console.log("FPS LIMIT:", fps);
+}
+
+document.getElementById("fps-40").addEventListener("click", () => {
+    setFPSLimit(40);
+});
+
+document.getElementById("fps-60").addEventListener("click", () => {
+    setFPSLimit(60);
+});
+
+document.getElementById("fps-120").addEventListener("click", () => {
+    setFPSLimit(120);
+});
+
+document.getElementById("fps-60").classList.add("active");
 
 // CAMERA SWITCH
 
@@ -843,13 +1807,16 @@ let joystickY = 0;
 let joystickTouchId = null;
 
 joystick.addEventListener("pointerdown", (event) => {
-
     event.preventDefault();
-    
+
+    // JOYSTICK TOUCH = RUN OFF
+    isSprinting = false;
+
+    mobileSprint.style.background = "rgba(30, 65, 40, 0.85)";
+
     movementYaw = mouseYaw;
     joystickTouchId = event.pointerId;
     joystick.setPointerCapture(event.pointerId);
-
 });
 
 joystick.addEventListener("pointermove", (event) => {
@@ -922,10 +1889,14 @@ mobileLook.addEventListener("pointermove", (event) => {
     event.preventDefault();
 
     const deltaX = event.clientX - lastLookX;
+    // AUTO-RUN DIRECTION STEERING
+if (isSprinting) {
+    movementYaw -= deltaX * mouseSensitivity * 2;
+}
     const deltaY = event.clientY - lastLookY;
 
-    mouseYaw -= deltaX * 0.004;
-    mousePitch -= deltaY * 0.003;
+    mouseYaw -= deltaX * mouseSensitivity * 2;
+    mousePitch -= deltaY * mouseSensitivity * 1.5;
 
     mousePitch = THREE.MathUtils.clamp(
         mousePitch,
@@ -949,50 +1920,153 @@ mobileLook.addEventListener("pointercancel", resetMobileLook);
 // PLAYER MOVEMENT
 // ==============================
 
+// LANDSCAPE MODE
+
+// START GAME
+
+const startScreen = document.getElementById("start-screen");
+const startGameBtn = document.getElementById("start-game-btn");
+
+startGameBtn.addEventListener("click", async () => {
+    try {
+        if (!document.fullscreenElement) {
+            await document.documentElement.requestFullscreen();
+        }
+
+        await enableLandscape();
+
+        startScreen.style.display = "none";
+
+    } catch (error) {
+        console.log("Game launch:", error);
+
+        startScreen.style.display = "none";
+    }
+});
+
+async function enableLandscape() {
+    try {
+        if (screen.orientation && screen.orientation.lock) {
+            await screen.orientation.lock("landscape");
+            console.log("LANDSCAPE MODE ENABLED");
+        }
+    } catch (error) {
+        console.log("Landscape lock requires fullscreen or user interaction.");
+    }
+}
+
+document.addEventListener("fullscreenchange", () => {
+    // TAP TO ENTER LANDSCAPE
+
+const rotateMessage = document.getElementById("rotate-message");
+
+rotateMessage.addEventListener("click", async () => {
+    try {
+        if (!document.fullscreenElement) {
+            await document.documentElement.requestFullscreen();
+        }
+
+        await enableLandscape();
+
+    } catch (error) {
+        console.log("Landscape request unavailable:", error);
+    }
+});
+    if (document.fullscreenElement) {
+        enableLandscape();
+    }
+});
+
 const keys = {};
 
 let lastWPress = 0;
 let isSprinting = false;
 
 
+// MOBILE RUN, JUMP AND CROUCH SYSTEM
+
+let isCrouching = false;
+
 const mobileSprint = document.getElementById("mobile-sprint");
 
-mobileSprint.addEventListener("pointerdown", (event) => {
+mobileSprint.addEventListener("click", () => {
+
+    isSprinting = !isSprinting;
+
+    if (isSprinting) {
+        isCrouching = false;
+        mobileSprint.style.background = "rgba(0, 150, 50, 0.95)";
+    } else {
+        mobileSprint.style.background = "rgba(30, 65, 40, 0.85)";
+    }
+
+    console.log("MOBILE SPRINT:", isSprinting);
+
+});
+
+const mobileCrouch = document.getElementById("mobile-crouch");
+
+mobileCrouch.addEventListener("pointerdown", (event) => {
     event.preventDefault();
-    isSprinting = true;
-    console.log("MOBILE SPRINT ON");
+
+    isCrouching = !isCrouching;
+
+    if (isCrouching) {
+        isSprinting = false;
+    }
+
+    console.log("MOBILE CROUCH:", isCrouching);
 });
 
-mobileSprint.addEventListener("pointerup", () => {
-    isSprinting = false;
-    console.log("MOBILE SPRINT OFF");
+const mobileJump = document.getElementById("mobile-jump");
+
+mobileJump.addEventListener("pointerdown", (event) => {
+    event.preventDefault();
+
+    if (!isJumping) {
+        isJumping = true;
+        verticalVelocity = jumpPower;
+    }
 });
-
-mobileSprint.addEventListener("pointercancel", () => {
-    isSprinting = false;
-});
-
-function stopMobileSprint() {
-    isSprinting = false;
-}
-
-mobileSprint.addEventListener("pointerup", stopMobileSprint);
-mobileSprint.addEventListener("pointercancel", stopMobileSprint);
-mobileSprint.addEventListener("lostpointercapture", stopMobileSprint);
 
 
 // SEPARATE MOVEMENT DIRECTION
 let movementYaw = mouseYaw;
+// PLAYER JUMP SYSTEM
+
+let isJumping = false;
+let verticalVelocity = 0;
+const gravity = 0.012;
+const jumpPower = 0.22;
 
 window.addEventListener("keydown", (event) => {
 
     const key = event.key.toLowerCase();
 
+    // PLAYER JUMP
+    if (key === " ") {
+        event.preventDefault();
+
+        if (!isJumping) {
+            isJumping = true;
+            verticalVelocity = jumpPower;
+        }
+    }
+    
+        // KEYBOARD CROUCH (C KEY)
+    if (key === "c") {
+        isCrouching = !isCrouching;
+
+        if (isCrouching) {
+            isSprinting = false;
+        }
+    }
+
     if (["w", "a", "s", "d"].includes(key)) {
         event.preventDefault();
     }
 
-    // CAPTURE CAMERA DIRECTION WHEN MOVEMENT STARTS
+    // CAPTURE CAMERA DIRECTION
     if (
         ["w", "a", "s", "d"].includes(key) &&
         !keys["w"] &&
@@ -1003,6 +2077,7 @@ window.addEventListener("keydown", (event) => {
         movementYaw = mouseYaw;
     }
 
+    // DOUBLE TAP W TO SPRINT
     if (key === "w" && !keys["w"]) {
 
         const currentTime = Date.now();
@@ -1057,9 +2132,28 @@ player.children.forEach(part => {
 // MOVE PLAYER
 // ==============================
 
-function movePlayer() {
+function movePlayer(deltaScale = 1) {
+    // CROUCH BODY ANIMATION
+player.scale.y = isCrouching ? 0.65 : 1;
+    // JUMP PHYSICS
 
-    const speed = isSprinting ? 0.22 : 0.09;
+if (isJumping) {
+
+    verticalVelocity -= gravity * deltaScale;
+
+    player.position.y += verticalVelocity * deltaScale;
+
+    if (player.position.y <= 0) {
+
+        player.position.y = 0;
+        verticalVelocity = 0;
+        isJumping = false;
+
+    }
+
+}
+
+    const speed = (isCrouching ? 0.045 : (isSprinting ? 0.22 : 0.09)) * deltaScale;
 
     isMoving =
     keys["w"] ||
@@ -1073,7 +2167,7 @@ function movePlayer() {
 }
 
     if (isMoving) {
-        walkTime += isSprinting ? 0.28 : 0.16;
+        walkTime += (isSprinting ? 0.28 : 0.16) * deltaScale;
     } else {
         walkTime = 0;
     }
@@ -1093,22 +2187,34 @@ function movePlayer() {
 
     const moveDirection = new THREE.Vector3();
 
-    
-    // MOBILE JOYSTICK MOVEMENT
+// MOBILE JOYSTICK MOVEMENT
 
-    if (Math.abs(joystickY) > 0.12) {
-        moveDirection.addScaledVector(forward, -joystickY);
-    }
+if (Math.abs(joystickY) > 0.12) {
+    moveDirection.addScaledVector(forward, -joystickY);
+}
 
-    if (Math.abs(joystickX) > 0.12) {
-        moveDirection.addScaledVector(right, joystickX);
-    }
+if (Math.abs(joystickX) > 0.12) {
+    moveDirection.addScaledVector(right, joystickX);
+}
 
+// KEYBOARD MOVEMENT
 
-    if (keys["w"]) moveDirection.add(forward);
-    if (keys["s"]) moveDirection.sub(forward);
-    if (keys["d"]) moveDirection.add(right);
-    if (keys["a"]) moveDirection.sub(right);
+if (keys["w"]) moveDirection.add(forward);
+if (keys["s"]) moveDirection.sub(forward);
+if (keys["d"]) moveDirection.add(right);
+if (keys["a"]) moveDirection.sub(right);
+
+// AUTO RUN
+
+const hasManualInput =
+    keys["w"] || keys["s"] ||
+    keys["a"] || keys["d"] ||
+    Math.abs(joystickX) > 0.12 ||
+    Math.abs(joystickY) > 0.12;
+
+if (isSprinting && !hasManualInput) {
+    moveDirection.add(forward);
+}
 
     if (moveDirection.lengthSq() > 0) {
 
@@ -1137,16 +2243,16 @@ function movePlayer() {
     playerArms[1].rotation.x = swing * 0.7;
 
     player.position.x = THREE.MathUtils.clamp(
-        player.position.x,
-        -280,
-        280
-    );
+    player.position.x,
+    -2400,
+    2400
+);
 
-    player.position.z = THREE.MathUtils.clamp(
-        player.position.z,
-        -490,
-        90
-    );
+player.position.z = THREE.MathUtils.clamp(
+    player.position.z,
+    -2600,
+    2200
+);
 
 }
 
@@ -1158,16 +2264,16 @@ function movePlayer() {
 
 let zombieWalkTime = 0;
 
-function animateZombies() {
+function animateZombies(deltaScale = 1) {
 
-    zombieWalkTime += 0.045;
+    zombieWalkTime += 0.045 * deltaScale;
 
     zombies.forEach((zombie, index) => {
 
         const movement = zombieMovement[index];
 
         // RANDOM DIRECTION CHANGE
-        movement.timer--;
+        movement.timer -= deltaScale;
 
         if (movement.timer <= 0) {
 
@@ -1182,8 +2288,8 @@ function animateZombies() {
         const moveX = Math.sin(movement.direction);
         const moveZ = Math.cos(movement.direction);
 
-        zombie.position.x += moveX * movement.speed;
-        zombie.position.z += moveZ * movement.speed;
+        zombie.position.x += moveX * movement.speed * deltaScale;
+        zombie.position.z += moveZ * movement.speed * deltaScale;
 
         // KEEP ZOMBIES INSIDE CITY AREA
         if (zombie.position.x < -5 || zombie.position.x > 5) {
@@ -1301,21 +2407,62 @@ function updateCamera() {
 // ANIMATION LOOP
 // ==============================
 
-function animate() {
+// LIVE FPS CALCULATOR
+
+let fpsFrameCount = 0;
+let fpsLastUpdate = 0;
+
+function animate(timestamp) {
 
     requestAnimationFrame(animate);
 
+    if (lastFrameTime === 0) {
+        lastFrameTime = timestamp;
+        fpsLastUpdate = timestamp;
+        return;
+    }
+
+    const elapsed = timestamp - lastFrameTime;
+    const frameInterval = 1000 / fpsLimit;
+
+    if (elapsed < frameInterval) {
+        return;
+    }
+
+    // ACCURATE FPS LIMIT
+    lastFrameTime = timestamp - (elapsed % frameInterval);
+
+    // SAME GAME SPEED AT ALL FPS
+    const deltaScale = Math.min(
+        elapsed / (1000 / 60),
+        3
+    );
+
     updateCamera();
 
-movePlayer();
+    movePlayer(deltaScale);
+    drawMiniMap();
 
-animateZombies();
+    animateZombies(deltaScale);
+    drawMiniMap();
 
-renderer.render(scene, camera);
+    renderer.render(scene, camera);
 
+    // UPDATE LIVE FPS
+    fpsFrameCount++;
+
+    if (timestamp - fpsLastUpdate >= 1000) {
+
+        document.getElementById("live-fps").textContent =
+            "FPS: " + fpsFrameCount;
+
+        fpsFrameCount = 0;
+        fpsLastUpdate = timestamp;
+
+    }
 }
 
-animate();
+requestAnimationFrame(animate);
 
 
 // ==============================
